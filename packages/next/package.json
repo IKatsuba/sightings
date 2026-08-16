@@ -1,0 +1,80 @@
+{
+  "name": "@sightings/next",
+  "version": "0.1.0",
+  "description": "Next.js integration for sightings — route handler, App Router beacon, crawler-counting middleware.",
+  "license": "MIT",
+  "author": "Igor Katsuba <igor@katsuba.dev>",
+  "homepage": "https://github.com/IKatsuba/sightings",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IKatsuba/sightings.git",
+    "directory": "packages/next"
+  },
+  "keywords": [
+    "sightings",
+    "next",
+    "nextjs",
+    "analytics",
+    "cookieless"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./client": {
+      "import": {
+        "types": "./dist/client.d.mts",
+        "default": "./dist/client.mjs"
+      },
+      "require": {
+        "types": "./dist/client.d.cts",
+        "default": "./dist/client.cjs"
+      }
+    },
+    "./middleware": {
+      "import": {
+        "types": "./dist/middleware.d.mts",
+        "default": "./dist/middleware.mjs"
+      },
+      "require": {
+        "types": "./dist/middleware.d.cts",
+        "default": "./dist/middleware.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "sightings": "workspace:*"
+  },
+  "peerDependencies": {
+    "next": ">=14",
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "next": "^16.3.1",
+    "react": "^19.2.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

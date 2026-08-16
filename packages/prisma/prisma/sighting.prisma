@@ -1,0 +1,39 @@
+/// Copy this model into your own schema.prisma. The column names are the
+/// contract between your database and `@sightings/prisma`; the model name is
+/// not — rename it and pass `{ model: 'yourName' }` to the adapter.
+model Sighting {
+  id String @id @default(cuid())
+
+  /// Pathname of the redacted url. The query never lands here — campaign tags
+  /// get their own columns, everything else was stripped before storage.
+  path String
+
+  /// Host of an external referrer, or null for a direct or internal visit.
+  /// Never a full url: foreign paths carry tokens and ids that are not yours.
+  referrer String?
+
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  utmContent  String?
+  utmTerm     String?
+  /// The `?ref=` tag aggregators append; same allowlist as the `utm_*` set.
+  ref         String?
+
+  /// Daily-rotating visitor hash. Null on crawler rows — hashing a crawler
+  /// distinguishes nothing worth distinguishing.
+  visitor String?
+  /// Country code the hosting edge derived from an IP that is never stored.
+  country String?
+
+  /// A crawler or AI-agent view. Human queries filter on `bot = false`;
+  /// forgetting to is the one way this column inflates a launch metric.
+  bot     Boolean @default(false)
+  /// Coarse crawler family (`googlebot`, `gptbot`, …), never the raw UA.
+  botName String?
+
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path, createdAt])
+}

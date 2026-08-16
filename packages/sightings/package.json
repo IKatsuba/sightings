@@ -1,0 +1,94 @@
+{
+  "name": "sightings",
+  "version": "0.1.0",
+  "description": "Cookieless pageview analytics that counts humans and AI crawlers, in your own database.",
+  "license": "MIT",
+  "author": "Igor Katsuba <igor@katsuba.dev>",
+  "homepage": "https://github.com/IKatsuba/sightings",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IKatsuba/sightings.git",
+    "directory": "packages/sightings"
+  },
+  "keywords": [
+    "analytics",
+    "cookieless",
+    "privacy",
+    "pageviews",
+    "self-hosted",
+    "crawlers",
+    "ai-agents",
+    "gdpr"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./beacon": {
+      "import": {
+        "types": "./dist/beacon.d.mts",
+        "default": "./dist/beacon.mjs"
+      },
+      "require": {
+        "types": "./dist/beacon.d.cts",
+        "default": "./dist/beacon.cjs"
+      }
+    },
+    "./crawlers": {
+      "import": {
+        "types": "./dist/crawlers.d.mts",
+        "default": "./dist/crawlers.mjs"
+      },
+      "require": {
+        "types": "./dist/crawlers.d.cts",
+        "default": "./dist/crawlers.cjs"
+      }
+    },
+    "./redact": {
+      "import": {
+        "types": "./dist/redact.d.mts",
+        "default": "./dist/redact.mjs"
+      },
+      "require": {
+        "types": "./dist/redact.d.cts",
+        "default": "./dist/redact.cjs"
+      }
+    },
+    "./storage": {
+      "import": {
+        "types": "./dist/storage.d.mts",
+        "default": "./dist/storage.mjs"
+      },
+      "require": {
+        "types": "./dist/storage.d.cts",
+        "default": "./dist/storage.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "isbot": "^5.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
