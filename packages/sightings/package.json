@@ -90,7 +90,6 @@
     "isbot": "^5.2.1"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   }
 }

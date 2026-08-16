@@ -76,7 +76,6 @@
     "react": "^19.2.8"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   }
 }
