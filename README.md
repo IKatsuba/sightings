@@ -204,9 +204,23 @@ export const myStorage: SightingsStorage = {
 
 ```bash
 pnpm install
-pnpm test
-pnpm build
+pnpm test           # vitest, against source
+pnpm typecheck
+pnpm build          # tsdown → ESM + CJS + types
+pnpm check:package  # publint + are-the-types-wrong, on the built packages
 ```
+
+## Releasing
+
+Changes that users would notice need a changeset:
+
+```bash
+pnpm changeset
+```
+
+The three packages are versioned in lockstep — an integration is written against a specific core API, so one version number that means the same thing everywhere is worth more than three tight ones.
+
+Merging to `main` opens a release PR collecting the pending changesets into version bumps and changelogs. Merging that PR publishes to npm from CI, with [provenance](https://docs.npmjs.com/generating-provenance-statements) — every published tarball carries a signed link back to the commit and the workflow run that built it.
 
 ## License
 

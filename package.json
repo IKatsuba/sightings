@@ -12,11 +12,19 @@
     "test:watch": "vitest",
     "typecheck": "pnpm -r --filter \"./packages/*\" typecheck",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check:package": "pnpm -r --filter \"./packages/*\" run check:package",
+    "changeset": "changeset",
+    "version-packages": "changeset version && pnpm install --lockfile-only && pnpm format",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.0",
     "@types/node": "^26.2.0",
     "prettier": "^3.9.6",
+    "publint": "^0.3.23",
     "tsdown": "^0.22.14",
     "typescript": "^5.9.3",
     "vitest": "^4.1.10"

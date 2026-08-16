@@ -20,3 +20,6 @@ jobs:
       - run: pnpm typecheck
       - run: pnpm test
       - run: pnpm build
+      # A wrong exports map only fails at someone else's `import`, so it is
+      # checked here rather than discovered after publishing.
+      - run: pnpm check:package
